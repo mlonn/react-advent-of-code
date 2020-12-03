@@ -1,11 +1,16 @@
 import React, { Suspense } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import status from "../status";
 interface Props {}
 const Solution = (props: Props) => {
   let { day } = useParams<{ day: string }>();
   const { goBack } = useHistory();
-  if (!status[parseInt(day, 10)]?.complete) {
+  const dayNumber = parseInt(day);
+  console.log(dayNumber);
+  if (isNaN(dayNumber) || dayNumber > 25) {
+    return <Redirect to="/"></Redirect>;
+  }
+  if (!status[dayNumber]?.complete) {
     return (
       <div>
         <p>Not yet solved</p>
