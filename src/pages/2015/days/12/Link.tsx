@@ -1,15 +1,16 @@
 import React from "react";
-import Day from "../../components/Day";
+import Day from "../../../../components/Day";
 import Ornament from "../../components/Ornament";
 
 interface Props {
   complete?: boolean;
   veryComplete?: boolean;
+  day: number;
 }
 
-const Link = ({ complete, veryComplete }: Props) => {
+const Link = ({ complete, veryComplete, day }: Props) => {
   return (
-    <Day year="2015" day="12" complete={complete}>
+    <Day day={day} complete={complete}>
       &gt;
       <Ornament complete={complete} veryComplete={veryComplete} type="O" />
       &gt;
