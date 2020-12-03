@@ -1,12 +1,15 @@
 import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 
 interface Props {
+  year: string;
+  day: string;
   complete?: boolean;
   children?: React.ReactNode;
 }
 
-const StyledDay = styled.a<{ complete?: boolean }>`
+const StyledDay = styled(Link)<{ complete?: boolean }>`
   :hover {
     background-color: #1e1e46;
     background-color: rgba(119, 119, 165, 0.2);
@@ -20,9 +23,11 @@ const StyledDay = styled.a<{ complete?: boolean }>`
   color: ${({ complete }) => (complete ? "#009900" : "#666666")};
 `;
 
-const Day = ({ children, complete }: Props) => {
+const Day = ({ children, complete, year, day }: Props) => {
+  let { url } = useRouteMatch();
+
   return (
-    <StyledDay complete={complete}>
+    <StyledDay complete={complete} to={`${url}/day/${day}`}>
       <div>{children}</div>
     </StyledDay>
   );

@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
 const StyledCalendar = styled.pre`
   cursor: default;
   -webkit-user-select: none;
@@ -13,11 +13,10 @@ const StyledCalendar = styled.pre`
 `;
 
 interface Props {
-  year: number;
   children: React.ReactNode;
 }
 
-const Calendar = ({ year, children }: Props) => {
+const Calendar = ({ children }: Props) => {
   return <StyledCalendar>{children}</StyledCalendar>;
 };
 

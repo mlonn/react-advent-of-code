@@ -35,13 +35,13 @@ const Year = styled.li<{ selected: boolean }>`
 `;
 
 const Nav = (props: Props) => {
-  const years = [2015, 2016, 2017, 2018, 2019, 2020];
+  const years = ["2015", "2016", "2017", "2018", "2019", "2020"];
   const location = useLocation();
   return (
     <StyledNav>
       <ul>
         {years.map((year) => (
-          <Year key={year} selected={`/${year}` === location.pathname}>
+          <Year key={year} selected={location.pathname.includes(year)}>
             <Link to={`/${year}`}>[{year}]</Link>
           </Year>
         ))}

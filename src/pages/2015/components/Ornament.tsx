@@ -41,8 +41,12 @@ const StyledOrnament = styled.span<Props>`
   }};
 `;
 
-const Ornament = ({ type }: Props) => {
-  return <StyledOrnament type={type}>{type}</StyledOrnament>;
+const Ornament = ({ type, complete, veryComplete }: Props) => {
+  return (
+    <StyledOrnament complete={complete} veryComplete={veryComplete} type={type}>
+      {type}
+    </StyledOrnament>
+  );
 };
 
 export default Ornament;
