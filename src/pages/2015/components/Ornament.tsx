@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { css } from "styled-components";
 
 type OrnamentType = "@" | "O" | "o" | "*";
@@ -15,27 +14,44 @@ const StyledOrnament = styled.span<Props>`
       case "@":
         return css`
           color: ${veryComplete ? "#ff0000" : complete ? "#009900" : "#666"}};
-          text-shadow: 0 0 5px ${
-            veryComplete ? "#ff0000" : complete ? "#009900" : "#666"
+          ${
+            veryComplete || complete
+              ? css`
+                  text-shadow: 0 0 5px
+                    ${veryComplete ? "#ff0000" : complete ? "#009900" : ""};
+                `
+              : ""
           };
         `;
       case "O":
         return css`
           color: ${veryComplete ? "#0066ff" : complete ? "#009900" : "#666"};
-          text-shadow: 0 0 5px
-            ${veryComplete ? "#ff0000" : complete ? "#009900" : "#666"};
+          ${veryComplete || complete
+            ? css`
+                text-shadow: 0 0 5px
+                  ${veryComplete ? "#0066ff" : complete ? "#009900" : ""};
+              `
+            : ""};
         `;
       case "o":
         return css`
           color: ${veryComplete ? "#ff9900" : complete ? "#009900" : "#666"};
-          text-shadow: 0 0 5px
-            ${veryComplete ? "#ff0000" : complete ? "#009900" : "#666"};
+          ${veryComplete || complete
+            ? css`
+                text-shadow: 0 0 5px
+                  ${veryComplete ? "#ff9900" : complete ? "#009900" : ""};
+              `
+            : ""};
         `;
       case "*":
         return css`
           color: ${veryComplete ? "#ffff66" : complete ? "#009900" : "#666"};
-          text-shadow: 0 0 5px
-            ${veryComplete ? "#ff0000" : complete ? "#009900" : "#666"};
+          ${veryComplete || complete
+            ? css`
+                text-shadow: 0 0 5px
+                  ${veryComplete ? "#ffff66" : complete ? "#009900" : ""};
+              `
+            : ""};
         `;
     }
   }};

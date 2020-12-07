@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const StyledCalendar = styled.pre`
+const StyledCalendar = styled.div`
   cursor: default;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -8,8 +8,9 @@ const StyledCalendar = styled.pre`
   -o-user-select: none;
   user-select: none;
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  grid-template-columns: min-content min-content min-content;
+  padding: 50px;
+  grid-column-gap: 10px;
 `;
 
 interface Props {

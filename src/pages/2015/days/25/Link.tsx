@@ -10,7 +10,7 @@ interface Props {
 
 const Link = ({ complete, veryComplete, day }: Props) => {
   return (
-    <Day day={day} complete={complete}>
+    <Day day={day} complete={complete} veryComplete={veryComplete}>
       <Ornament complete={complete} veryComplete={veryComplete} type="*" />
     </Day>
   );

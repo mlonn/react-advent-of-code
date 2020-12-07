@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 interface Props {}
 
-const StyledSpan = styled.span`
+const StyledSpan = styled.pre`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+  margin: 0;
 `;
 
 const Footer = (props: Props) => {

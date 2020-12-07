@@ -5,6 +5,7 @@ import styled from "styled-components";
 interface Props {
   day: number;
   complete?: boolean;
+  veryComplete?: boolean;
   children?: React.ReactNode;
 }
 
@@ -22,7 +23,7 @@ const StyledDay = styled(Link)<{ complete?: boolean }>`
   color: ${({ complete }) => (complete ? "#009900" : "#666666")};
 `;
 
-const Day = ({ children, complete, day }: Props) => {
+const Day = ({ children, complete, veryComplete, day }: Props) => {
   let { url } = useRouteMatch();
 
   return (

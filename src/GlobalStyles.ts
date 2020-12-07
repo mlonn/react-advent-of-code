@@ -21,11 +21,12 @@ const GlobalStyle = createGlobalStyle`
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
   }
-
+  * {
+    font-family: "Source Code Pro", monospace;
+  }
   body {
     background: #0f0f23; /*337 x 5*/
     color: #cccccc;
-    font-family: "Source Code Pro", monospace;
     font-size: 14pt;
     min-width: 60em;
   }
