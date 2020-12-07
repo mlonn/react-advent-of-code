@@ -11,7 +11,7 @@ import status from "./status";
 const days = [...Array(25)].map((_, i) => {
   const day = i + 1;
   return {
-    Day: React.lazy(() => import(`./days/${i + 1}/Link`)),
+    Day: React.lazy(() => import(`./day/${i + 1}/Link`)),
     dayStatus: status[day],
   };
 });

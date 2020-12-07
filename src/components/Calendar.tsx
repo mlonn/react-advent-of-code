@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const StyledCalendar = styled.div`
+const StyledCalendar = styled.pre`
   cursor: default;
   -webkit-user-select: none;
   -khtml-user-select: none;

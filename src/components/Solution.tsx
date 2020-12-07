@@ -19,7 +19,7 @@ const Solution = (props: Props) => {
     );
   }
   const SolutionDay = React.lazy(
-    () => import(`../pages${location.pathname}/days/${day}/Solution`)
+    () => import(`../pages${location.pathname}/Solution`)
   );
   return (
     <Suspense fallback={<div>Loading...</div>}>
