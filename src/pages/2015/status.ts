@@ -11,7 +11,7 @@ const status: Status = {
   },
   2: {
     complete: true,
-    veryComplete: false,
+    veryComplete: true,
   },
 };
 
