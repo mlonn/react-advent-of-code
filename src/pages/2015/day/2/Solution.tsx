@@ -39,12 +39,15 @@ const Solution = (props: Props) => {
   }, []);
   return (
     <div>
+      <h2>--- Day 2: I Was Told There Would Be No Math ---</h2>
       <div>
         <button onClick={part1}>[Solve part 1]</button>
         {solution1}
       </div>
-      <button onClick={part2}>[Solve part 2]</button>
-      {solution2}
+      <div>
+        <button onClick={part2}>[Solve part 2]</button>
+        {solution2}
+      </div>
     </div>
   );
 };

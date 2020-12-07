@@ -37,8 +37,7 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     padding: 0;
     font-family: inherit;
-    margin:0;
-    
+    margin: 0;
   }
 
   button,
@@ -63,6 +62,12 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: 1em;
     font-weight: normal;
+  }
+  h2 {
+    color: #ffffff;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    white-space: nowrap;
   }
 `;
 
