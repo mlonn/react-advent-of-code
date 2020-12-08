@@ -25,7 +25,6 @@ const Solution = (props: Props) => {
         .split("x")
         .map((v) => parseInt(v))
         .sort((a, b) => a - b);
-      console.log(s, m, l);
       const ribbon = s * 2 + m * 2 + s * m * l;
       return previousValue + ribbon;
     }, 0);

@@ -33,7 +33,6 @@ const Solution = (props: Props) => {
       const house = houses[`${sx}:${sy}`];
       houses[`${sx}:${sy}`] = house ? house + 1 : 1;
     });
-    console.log(houses);
     setSolution1(Object.keys(houses).length);
   };
   const part2 = () => {

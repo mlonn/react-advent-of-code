@@ -6,7 +6,7 @@ const Solution = (props: Props) => {
   let { day } = useParams<{ day: string }>();
   const { goBack, location } = useHistory();
   const dayNumber = parseInt(day);
-  console.log(dayNumber);
+
   if (isNaN(dayNumber) || dayNumber > 25) {
     return <Redirect to="/"></Redirect>;
   }

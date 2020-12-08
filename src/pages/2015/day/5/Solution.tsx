@@ -20,7 +20,6 @@ const Solution = (props: Props) => {
       .filter(
         (line) => line.split("").filter((c) => vowels.includes(c)).length >= 3
       );
-    console.log(nice);
     setSolution1(nice.length);
   };
   const part2 = () => {
