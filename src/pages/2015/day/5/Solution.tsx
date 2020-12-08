@@ -47,7 +47,7 @@ const Solution = (props: Props) => {
   }, []);
   return (
     <div>
-      <h2>--- Day 3: Perfectly Spherical Houses in a Vacuum ---</h2>
+      <h2>--- Day 5: Doesn't He Have Intern-Elves For This? ---</h2>
       <div>
         <button onClick={part1}>[Solve part 1]</button>
         {solution1}
