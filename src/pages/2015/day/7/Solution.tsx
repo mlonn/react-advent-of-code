@@ -12,47 +12,70 @@ const Solution = (props: Props) => {
     return n & 0xffff;
   };
 
-  const part1 = () => {
-    const outputs: { [key: string]: number } = {};
+  const getValue = (input: string, outputs: { [key: string]: number }) => {
+    if (isNaN(+input)) {
+      return outputs[input];
+    }
+    return +input;
+  };
+  const part1 = (outputs: { [key: string]: number } = {}) => {
     const lines = data.split("\n");
     for (let index = 0; index < 10000; index++) {
+      if (outputs["a"]) {
+        break;
+      }
       lines.forEach((line) => {
         const [i, o] = line.split(" -> ");
-        const number = parseInt(i);
-        if (!isNaN(number)) {
-          outputs[o] = number;
-        } else if (i.includes("AND")) {
+        if (outputs[o]) {
+          return;
+        }
+        if (i.includes("AND")) {
           const [x, y] = i.split(" AND ");
-          const xval = isNaN(parseInt(x)) ? outputs[x] : parseInt(x);
-          const yval = isNaN(parseInt(y)) ? outputs[y] : parseInt(y);
-          if (xval && yval) outputs[o] = uint16(xval & yval);
+          const xval = getValue(x, outputs);
+          const yval = getValue(y, outputs);
+          if (!isNaN(xval) && !isNaN(yval)) {
+            outputs[o] = uint16(xval & yval);
+          }
         } else if (i.includes("OR")) {
           const [x, y] = i.split(" OR ");
-          const xval = isNaN(parseInt(x)) ? outputs[x] : parseInt(x);
-          const yval = isNaN(parseInt(y)) ? outputs[y] : parseInt(y);
-          if (xval && yval) outputs[o] = uint16(xval | yval);
+          const xval = getValue(x, outputs);
+          const yval = getValue(y, outputs);
+          if (!isNaN(xval) && !isNaN(yval)) {
+            outputs[o] = uint16(xval | yval);
+          }
         } else if (i.includes("LSHIFT")) {
           const [x, y] = i.split(" LSHIFT ");
-          if (outputs[x]) outputs[o] = uint16(outputs[x] << parseInt(y));
+          const xval = getValue(x, outputs);
+          const yval = getValue(y, outputs);
+          if (!isNaN(xval) && !isNaN(yval)) {
+            outputs[o] = uint16(xval << yval);
+          }
         } else if (i.includes("RSHIFT")) {
           const [x, y] = i.split(" RSHIFT ");
-          const xval = isNaN(parseInt(x)) ? outputs[x] : parseInt(x);
-          const yval = isNaN(parseInt(y)) ? outputs[y] : parseInt(y);
-          if (xval && yval) outputs[o] = uint16(xval >> yval);
+          const xval = getValue(x, outputs);
+          const yval = getValue(y, outputs);
+          if (!isNaN(xval) && !isNaN(yval)) {
+            outputs[o] = uint16(xval >> yval);
+          }
         } else if (i.includes("NOT")) {
           const [, x] = i.split("NOT ");
-          const xval = isNaN(parseInt(x)) ? outputs[x] : parseInt(x);
-          if (xval) outputs[o] = uint16(~xval);
-        } else if (outputs[i]) {
-          console.log("hej");
+          const xval = getValue(x, outputs);
+          if (!isNaN(xval)) {
+            outputs[o] = uint16(~xval);
+          }
+        } else if (!isNaN(outputs[i])) {
           outputs[o] = outputs[i];
+        } else if (!isNaN(+i)) {
+          outputs[o] = +i;
         }
       });
     }
-
-    setSolution1(outputs.lw);
+    return outputs.a;
   };
-  const part2 = () => {};
+  const part2 = () => {
+    const a = part1();
+    setSolution2(part1({ b: a }));
+  };
 
   useEffect(() => {
     fetch(input)
@@ -61,15 +84,15 @@ const Solution = (props: Props) => {
   }, []);
   return (
     <div>
-      <h2>--- Day 6: Probably a Fire Hazard ---</h2>
+      <h2>--- Day 7: Some Assembly Required ---</h2>
       <div>
-        <button onClick={part1}>[Solve part 1]</button>
+        <button onClick={() => setSolution1(part1())}>[Solve part 1]</button>
         {solution1}
       </div>
       <div>
         <button onClick={part2}>[Solve part 2]</button>
+        {solution2}
       </div>
-      {solution2}
     </div>
   );
 };
