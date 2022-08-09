@@ -1,105 +1,49 @@
 import { useEffect, useState } from "react";
-import input from "./input.txt";
 
 interface Props {}
 
 const Solution = (props: Props) => {
-  const [data, setData] = useState<string>("");
+  const [data, setData] = useState<string>("1113222113");
 
   const [solution1, setSolution1] = useState<number>();
   const [solution2, setSolution2] = useState<number>();
-  function permute(permutation: any): string[][] {
-    var length = permutation.length,
-      result = [permutation.slice()],
-      c = new Array(length).fill(0),
-      i = 1,
-      k,
-      p;
 
-    while (i < length) {
-      if (c[i] < i) {
-        k = i % 2 && c[i];
-        p = permutation[i];
-        permutation[i] = permutation[k];
-        permutation[k] = p;
-        ++c[i];
-        i = 1;
-        result.push(permutation.slice());
+  const looksay = (input: string): string => {
+    let output = "";
+    let count = 1;
+    let currentChar = input[0];
+    for (let i = 1; i < input.length; i++) {
+      const char = input[i];
+      if (currentChar === char) {
+        count++;
       } else {
-        c[i] = 0;
-        ++i;
+        output += count + input[i - 1];
+        currentChar = char;
+        count = 1;
       }
     }
-    return result;
-  }
-
-  function getGraph() {
-    const graph: any = {};
-    const lines = data.split("\n");
-
-    function addDist(a: string, b: string, dist: string) {
-      if (graph[a]) {
-        graph[a][b] = +dist;
-      } else {
-        graph[a] = { [b]: +dist };
-      }
-    }
-
-    lines.forEach((line) => {
-      const [a, rest] = line.split(" to ");
-      const [b, dist] = rest.split(" = ");
-      addDist(a, b, dist);
-      addDist(b, a, dist);
-    });
-    return graph;
-  }
+    output += count + input[input.length - 1];
+    return output;
+  };
 
   const part1 = () => {
-    const graph = getGraph();
-    const shortest = permute(Object.keys(graph)).reduce((shortest, path) => {
-      let sum = 0;
-      for (let i = 0; i < path.length - 1; i++) {
-        const fromCity = path[i];
-        const toCity = path[i + 1];
-        sum += graph[fromCity][toCity];
-      }
-      if (sum < shortest) {
-        return sum;
-      } else {
-        return shortest;
-      }
-    }, Infinity);
-
-    setSolution1(shortest);
+    let current = data;
+    for (let i = 0; i < 40; i++) {
+      current = looksay(current);
+    }
+    setSolution1(current.length);
   };
   const part2 = () => {
-    const graph = getGraph();
-
-    const longest = permute(Object.keys(graph)).reduce((longest, path) => {
-      let sum = 0;
-      for (let i = 0; i < path.length - 1; i++) {
-        const fromCity = path[i];
-        const toCity = path[i + 1];
-        sum += graph[fromCity][toCity];
-      }
-      if (sum > longest) {
-        return sum;
-      } else {
-        return longest;
-      }
-    }, 0);
-
-    setSolution2(longest);
+    let current = data;
+    for (let i = 0; i < 50; i++) {
+      current = looksay(current);
+    }
+    setSolution2(current.length);
   };
 
-  useEffect(() => {
-    fetch(input)
-      .then((r) => r.text())
-      .then((t) => setData(t || ""));
-  }, []);
   return (
     <div>
-      <h2>--- Day 9: All in a Single Night ---</h2>
+      <h2>--- Day 10: Elves Look, Elves Say ---</h2>
       <div>
         <button onClick={part1}>[Solve part 1]</button>
         {solution1}

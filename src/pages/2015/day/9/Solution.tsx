@@ -8,8 +8,8 @@ const Solution = (props: Props) => {
 
   const [solution1, setSolution1] = useState<number>();
   const [solution2, setSolution2] = useState<number>();
-  function permute(permutation: any): string[][] {
-    var length = permutation.length,
+  function permute<T>(permutation: T[]): T[][] {
+    let length = permutation.length,
       result = [permutation.slice()],
       c = new Array(length).fill(0),
       i = 1,
