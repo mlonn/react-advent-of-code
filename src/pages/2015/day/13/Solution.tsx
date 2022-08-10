@@ -9,7 +9,6 @@ const Solution = (props: Props) => {
 
   const [solution1, setSolution1] = useState<number>();
   const [solution2, setSolution2] = useState<number>();
-
   function getGraph() {
     const graph: any = {};
     const lines = data.split("\n");
@@ -23,40 +22,29 @@ const Solution = (props: Props) => {
     }
 
     lines.forEach((line) => {
-      const [a, rest] = line.split(" to ");
-      const [b, dist] = rest.split(" = ");
-      addDist(a, b, dist);
-      addDist(b, a, dist);
+      line = line.replace(".", "");
+      if (line.includes("gain")) {
+        const [a, rest] = line.split(" would gain ");
+        const [units, b] = rest.split(" happiness units by sitting next to ");
+        addDist(a, b, units);
+      } else {
+        const [a, rest] = line.split(" would lose ");
+        const [units, b] = rest.split(" happiness units by sitting next to ");
+        addDist(a, b, "-" + units);
+      }
     });
     return graph;
   }
 
-  const part1 = () => {
-    const graph = getGraph();
-    const shortest = permute(Object.keys(graph)).reduce((shortest, path) => {
+  const getBestScore = (graph: any) =>
+    permute(Object.keys(graph)).reduce((longest, path) => {
       let sum = 0;
-      for (let i = 0; i < path.length - 1; i++) {
-        const fromCity = path[i];
-        const toCity = path[i + 1];
-        sum += graph[fromCity][toCity];
-      }
-      if (sum < shortest) {
-        return sum;
-      } else {
-        return shortest;
-      }
-    }, Infinity);
-    setSolution1(shortest);
-  };
-  const part2 = () => {
-    const graph = getGraph();
-
-    const longest = permute(Object.keys(graph)).reduce((longest, path) => {
-      let sum = 0;
-      for (let i = 0; i < path.length - 1; i++) {
-        const fromCity = path[i];
-        const toCity = path[i + 1];
-        sum += graph[fromCity][toCity];
+      for (let i = 0; i < path.length; i++) {
+        const me = path[i];
+        const right = path[(i + 1) % path.length];
+        const left = path[(i - 1 + path.length) % path.length];
+        sum += graph[me][right];
+        sum += graph[me][left];
       }
       if (sum > longest) {
         return sum;
@@ -65,7 +53,20 @@ const Solution = (props: Props) => {
       }
     }, 0);
 
-    setSolution2(longest);
+  const part1 = () => {
+    const graph = getGraph();
+    const highest = getBestScore(graph);
+    setSolution1(highest);
+  };
+  const part2 = () => {
+    const graph = getGraph();
+    graph.me = {};
+    Object.keys(graph).forEach((key) => {
+      graph[key].me = 0;
+      graph.me[key] = 0;
+    });
+    const highest = getBestScore(graph);
+    setSolution2(highest);
   };
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import input from "../7/input.txt";
 
 interface Props {}
 
