@@ -45,6 +45,10 @@ const status: Status = {
     complete: true,
     veryComplete: true,
   },
+  11: {
+    complete: true,
+    veryComplete: true,
+  },
 };
 
 export default status;
