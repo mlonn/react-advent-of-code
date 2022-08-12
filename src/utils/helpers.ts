@@ -34,3 +34,34 @@ export function numbers(data: string) {
 export function lines(data: string) {
   return data.split("\n");
 }
+
+export function grid(data: string): string[][] {
+  return lines(data).map((line) => line.split(""));
+}
+
+export function getNeighbours<T>(x: number, y: number, grid: T[][]): T[] {
+  const neighbours: T[] = [];
+  if (grid.length === 0) {
+    return [];
+  }
+  const width = grid[0].length;
+  const height = grid.length;
+  for (let i = -1; i <= 1; i++) {
+    for (let j = -1; j <= 1; j++) {
+      // Dont check our self
+      if (j == 0 && i == 0) {
+        continue;
+      }
+      // lower bound
+      if (x + j == -1 || y + i == -1) {
+        continue;
+      }
+      // upper bound
+      if (x + j >= width || y + i >= height) {
+        continue;
+      }
+      neighbours.push(grid[y + i][x + j]);
+    }
+  }
+  return neighbours;
+}
