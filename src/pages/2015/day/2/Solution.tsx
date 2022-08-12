@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -11,7 +12,7 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
 
   const part1 = () => {
-    const solution = data.split("\n").reduce((previousValue, currentValue) => {
+    const solution = lines(data).reduce((previousValue, currentValue) => {
       let [l, w, h] = currentValue.split("x").map((v) => parseInt(v));
       const paper = 2 * l * w + 2 * w * h + 2 * h * l;
       const min = Math.min(l * w, w * h, h * l);
@@ -20,7 +21,7 @@ const Solution = (props: Props) => {
     setSolution1(solution);
   };
   const part2 = () => {
-    const solution = data.split("\n").reduce((previousValue, currentValue) => {
+    const solution = lines(data).reduce((previousValue, currentValue) => {
       let [s, m, l] = currentValue
         .split("x")
         .map((v) => parseInt(v))

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
-import { permute } from "../../../../utils/helpers";
+import { lines, permute } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -11,7 +11,6 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
   function getGraph() {
     const graph: any = {};
-    const lines = data.split("\n");
 
     function addDist(a: string, b: string, dist: string) {
       if (graph[a]) {
@@ -21,7 +20,7 @@ const Solution = (props: Props) => {
       }
     }
 
-    lines.forEach((line) => {
+    lines(data).forEach((line) => {
       line = line.replace(".", "");
       if (line.includes("gain")) {
         const [a, rest] = line.split(" would gain ");

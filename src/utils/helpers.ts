@@ -22,3 +22,15 @@ export function permute<T>(permutation: T[]): T[][] {
   }
   return result;
 }
+
+export function numbers(data: string) {
+  const buckets: number[] = [];
+  lines(data).forEach((line, index) => {
+    buckets.push(+line);
+  });
+  return buckets;
+}
+
+export function lines(data: string) {
+  return data.split("\n");
+}

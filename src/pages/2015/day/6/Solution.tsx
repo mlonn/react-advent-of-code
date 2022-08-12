@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -11,7 +12,7 @@ const Solution = (props: Props) => {
 
   const part1 = () => {
     const lights: any = {};
-    data.split("\n").forEach((line) => {
+    lines(data).forEach((line) => {
       let current = line;
       if (line.startsWith("turn ")) {
         current = line.slice(5);
@@ -42,7 +43,7 @@ const Solution = (props: Props) => {
   };
   const part2 = () => {
     const lights: { [key: string]: number } = {};
-    data.split("\n").forEach((line) => {
+    lines(data).forEach((line) => {
       let current = line;
       if (line.startsWith("turn ")) {
         current = line.slice(5);

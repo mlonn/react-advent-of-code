@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -35,11 +36,10 @@ const Solution = (props: Props) => {
   }
 
   function getDeers() {
-    const lines = data.split("\n");
     const deers: {
       [key: string]: Deer;
     } = {};
-    lines.forEach((line) => {
+    lines(data).forEach((line) => {
       const match = line.match(
         /(.*) can fly (.*) km\/s for (.*) seconds, but then must rest for (.*) seconds\./
       );

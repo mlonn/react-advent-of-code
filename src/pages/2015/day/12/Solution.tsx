@@ -38,7 +38,6 @@ const Solution = (props: Props) => {
     return n;
   };
   const part2 = () => {
-    console.log("p");
     setSolution2(sum2(JSON.parse(data)));
   };
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -10,20 +11,18 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
 
   const part1 = () => {
-    const lines = data.split("\n");
     let chars = 0;
     let mem = 0;
-    lines.forEach((line) => {
+    lines(data).forEach((line) => {
       chars += eval(line).length;
       mem += line.length;
     });
     setSolution1(mem - chars);
   };
   const part2 = () => {
-    const lines = data.split("\n");
     let escaped = 0;
     let mem = 0;
-    lines.forEach((line) => {
+    lines(data).forEach((line) => {
       escaped += JSON.stringify(line).length;
       mem += line.length;
     });

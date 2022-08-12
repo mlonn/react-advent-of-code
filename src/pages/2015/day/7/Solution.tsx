@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -19,12 +20,11 @@ const Solution = (props: Props) => {
     return +input;
   };
   const part1 = (outputs: { [key: string]: number } = {}) => {
-    const lines = data.split("\n");
     for (let index = 0; index < 10000; index++) {
       if (outputs["a"]) {
         break;
       }
-      lines.forEach((line) => {
+      lines(data).forEach((line) => {
         const [i, o] = line.split(" -> ");
         if (outputs[o]) {
           return;

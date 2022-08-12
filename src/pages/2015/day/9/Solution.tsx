@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
-import { permute } from "../../../../utils/helpers";
+import { lines, permute } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -12,8 +12,6 @@ const Solution = (props: Props) => {
 
   function getGraph() {
     const graph: any = {};
-    const lines = data.split("\n");
-
     function addDist(a: string, b: string, dist: string) {
       if (graph[a]) {
         graph[a][b] = +dist;
@@ -22,7 +20,7 @@ const Solution = (props: Props) => {
       }
     }
 
-    lines.forEach((line) => {
+    lines(data).forEach((line) => {
       const [a, rest] = line.split(" to ");
       const [b, dist] = rest.split(" = ");
       addDist(a, b, dist);

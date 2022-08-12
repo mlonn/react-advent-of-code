@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 type Ingredient = {
@@ -17,9 +18,8 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
 
   function getStuff() {
-    const lines = data.split("\n");
     const stuffs: Ingredient[] = [];
-    lines.forEach((line) => {
+    lines(data).forEach((line) => {
       const match = line.match(
         /(.*): capacity (.*), durability (.*), flavor (.*), texture (.*), calories (.*)/
       );

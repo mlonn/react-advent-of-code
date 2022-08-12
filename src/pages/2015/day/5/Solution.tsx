@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -11,8 +12,7 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
 
   const part1 = () => {
-    const nice = data
-      .split("\n")
+    const nice = lines(data)
       .filter((line) => !bad.some((b) => line.includes(b)))
       .filter(
         (line) => line.split("").filter((c) => line.includes(c + c)).length > 0
@@ -23,8 +23,7 @@ const Solution = (props: Props) => {
     setSolution1(nice.length);
   };
   const part2 = () => {
-    const nice = data
-      .split("\n")
+    const nice = lines(data)
       .filter((line) => {
         const chars = line.split("");
         return chars.find((c, i) => chars[i + 2] === c);

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { lines } from "../../../../utils/helpers";
 
 interface Props {}
 type Sue = {
@@ -22,9 +23,8 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
 
   function getSues() {
-    const lines = data.split("\n");
     const sues: any[] = [];
-    lines.forEach((line, index) => {
+    lines(data).forEach((line, index) => {
       const sue: any = {};
       const children = line.match(/.*children: (\d*)/);
       if (children) {

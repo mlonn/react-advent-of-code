@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import input from "./input.txt";
+import { numbers } from "../../../../utils/helpers";
 
 interface Props {}
 
@@ -9,14 +10,6 @@ const Solution = (props: Props) => {
   const [solution1, setSolution1] = useState<number>();
   const [solution2, setSolution2] = useState<number>();
 
-  function getBuckets() {
-    const lines = data.split("\n");
-    const buckets: number[] = [];
-    lines.forEach((line, index) => {
-      buckets.push(+line);
-    });
-    return buckets;
-  }
   function combinations(arr: number[]) {
     const fn = (active: number[], rest: number[], a: number[][]) => {
       if (active.length === 0 && rest.length === 0) return [];
@@ -34,12 +27,12 @@ const Solution = (props: Props) => {
     return fn([], arr, []);
   }
   const part1 = () => {
-    const buckets = getBuckets();
+    const buckets = numbers(data);
     setSolution1(combinations(buckets).length);
   };
 
   const part2 = () => {
-    const buckets = getBuckets();
+    const buckets = numbers(data);
     const valid = combinations(buckets);
     const min = valid.reduce((min, v) => {
       if (v.length < min) {
