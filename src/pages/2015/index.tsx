@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Calendar from "../../components/Calendar";
-import Solution from "./components/Solution";
+import Solution from "../../components/Solution";
 import Star from "../../components/Star";
 import Background from "./components/Background";
 import Footer from "./components/Footer";
@@ -31,7 +31,6 @@ const AoC2015 = () => {
                 return (
                   <>
                     <Day
-                      year={2015}
                       day={i + 1}
                       complete={dayStatus?.complete}
                       veryComplete={dayStatus?.veryComplete}
@@ -50,7 +49,7 @@ const AoC2015 = () => {
           <Background />
         </Suspense>
       </Route>
-      <Route path={`${path}/day/:day`}>
+      <Route path={`/:year/day/:day`}>
         <Solution />
       </Route>
     </Switch>
