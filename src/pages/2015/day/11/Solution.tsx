@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {}
 
 const Solution = (props: Props) => {
-  const [data, setData] = useState<string>("hxbxwxba");
+  const [data] = useState<string>("hxbxwxba");
 
   const [solution1, setSolution1] = useState<string>();
   const [solution2, setSolution2] = useState<string>();

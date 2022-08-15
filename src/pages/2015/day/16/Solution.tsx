@@ -23,9 +23,9 @@ const Solution = (props: Props) => {
   const [solution2, setSolution2] = useState<number>();
 
   function getSues() {
-    const sues: any[] = [];
+    const sues: Sue[] = [];
     lines(data).forEach((line, index) => {
-      const sue: any = {};
+      const sue: Sue = {};
       const children = line.match(/.*children: (\d*)/);
       if (children) {
         const [, m] = children;
@@ -82,7 +82,7 @@ const Solution = (props: Props) => {
     return sues;
   }
 
-  const rightSue: any = {
+  const rightSue: Sue = {
     children: 3,
     cats: 7,
     samoyeds: 2,
@@ -101,7 +101,7 @@ const Solution = (props: Props) => {
       const sue = sues[sueIndex];
       let correct = true;
       for (const key of Object.keys(sue)) {
-        if (rightSue[key] !== sue[key]) {
+        if (rightSue[key as keyof Sue] !== sue[key as keyof Sue]) {
           correct = false;
           break;
         }
@@ -118,17 +118,26 @@ const Solution = (props: Props) => {
       const sue = sues[sueIndex];
       let correct = true;
       for (const quality in sue) {
+        const key = quality as keyof Sue;
+        const currentValue = sue[key];
+        const rightValue = rightSue[key];
+        if (!currentValue) {
+          continue;
+        }
+        if (!rightValue) {
+          continue;
+        }
         if (quality === "cats" || quality === "trees") {
-          if (sue[quality] <= rightSue[quality]) {
+          if (currentValue <= rightValue) {
             correct = false;
             break;
           }
         } else if (quality === "pomeranians" || quality === "goldfish") {
-          if (sue[quality] >= rightSue[quality]) {
+          if (currentValue >= rightValue) {
             correct = false;
             break;
           }
-        } else if (rightSue[quality] !== sue[quality]) {
+        } else if (rightValue !== currentValue) {
           correct = false;
           break;
         }

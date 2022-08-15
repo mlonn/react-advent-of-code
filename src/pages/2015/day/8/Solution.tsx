@@ -14,6 +14,7 @@ const Solution = (props: Props) => {
     let chars = 0;
     let mem = 0;
     lines(data).forEach((line) => {
+      // eslint-disable-next-line no-eval
       chars += eval(line).length;
       mem += line.length;
     });

@@ -104,7 +104,7 @@ const Solution = (props: Props) => {
   const ingredients = [];
 
   for (let i = 0; i < N_INGREDIENTS; i++) {
-    if (i == 0) {
+    if (i === 0) {
       ingredients[i] = MAX_TSP - N_INGREDIENTS + 1;
     } else {
       ingredients[i] = 1;

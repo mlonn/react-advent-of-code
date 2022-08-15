@@ -49,11 +49,11 @@ export function getNeighbours<T>(x: number, y: number, grid: T[][]): T[] {
   for (let i = -1; i <= 1; i++) {
     for (let j = -1; j <= 1; j++) {
       // Dont check our self
-      if (j == 0 && i == 0) {
+      if (j === 0 && i === 0) {
         continue;
       }
       // lower bound
-      if (x + j == -1 || y + i == -1) {
+      if (x + j === -1 || y + i === -1) {
         continue;
       }
       // upper bound
