@@ -96,7 +96,7 @@ const Solution = (props: Props) => {
   }, []);
   return (
     <div>
-      <h2>--- Day 9: All in a Single Night ---</h2>
+      <h2>--- Day 14: Reindeer Olympics ---</h2>
       <div>
         <button onClick={part1}>[Solve part 1]</button>
         {solution1}

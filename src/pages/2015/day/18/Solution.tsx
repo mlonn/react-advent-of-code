@@ -90,7 +90,7 @@ const Solution = (props: Props) => {
 
   return (
     <div>
-      <h2>--- Day 9: All in a Single Night ---</h2>
+      <h2>--- Day 18: Like a GIF For Your Yard ---</h2>
       <div>
         <button onClick={part1}>[Solve part 1]</button>
         {solution1}
