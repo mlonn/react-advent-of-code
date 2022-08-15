@@ -23,18 +23,15 @@ const Solution = (props: Props) => {
         mol = line;
       }
     });
-    let total = 0;
     const distict = new Set();
     for (const rule of rules) {
       const re = new RegExp(rule.input, "g");
       let match;
       while ((match = re.exec(mol)) != null) {
-        console.log(match);
         const replaced =
           mol.substring(0, match.index) +
           rule.output +
           mol.substring(match.index + rule.input.length);
-        console.log(replaced);
         distict.add(replaced);
       }
     }

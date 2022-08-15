@@ -1,47 +1,43 @@
-import { useEffect, useState } from "react";
-import input from "./input.txt";
+import { useState } from "react";
+import input from "./input";
 
 interface Props {}
 
+export const part1 = (input: string): number => {
+  return input
+    .split("")
+    .reduce((acc, curr) => (curr === "(" ? acc + 1 : acc - 1), 0);
+};
+
+export const part2 = (input: string): number => {
+  let level = 0;
+  const instructions = input.split("");
+  for (const index in instructions) {
+    level = instructions[index] === "(" ? level + 1 : level - 1;
+    if (level === -1) {
+      return parseInt(index) + 1;
+    }
+  }
+  return -1;
+};
+
 const Solution = (props: Props) => {
-  const [data, setData] = useState<string>("");
-
   const [solution1, setSolution1] = useState<number>();
-
   const [solution2, setSolution2] = useState<number>();
 
-  const part1 = () => {
-    const solution = data
-      .split("")
-      .reduce((acc, curr) => (curr === "(" ? acc + 1 : acc - 1), 0);
-    setSolution1(solution);
-  };
-  const part2 = () => {
-    let level = 0;
-    const instructions = data.split("");
-    for (const index in instructions) {
-      level = instructions[index] === "(" ? level + 1 : level - 1;
-      if (level === -1) {
-        setSolution2(parseInt(index) + 1);
-        break;
-      }
-    }
-  };
-
-  useEffect(() => {
-    fetch(input)
-      .then((r) => r.text())
-      .then((t) => setData(t || ""));
-  }, []);
   return (
     <div>
       <h2>--- Day 1: Not Quite Lisp ---</h2>
       <div>
-        <button onClick={part1}>[Solve part 1]</button>
+        <button onClick={() => setSolution1(part1(input))}>
+          [Solve part 1]
+        </button>
         {solution1}
       </div>
       <div>
-        <button onClick={part2}>[Solve part 2]</button>
+        <button onClick={() => setSolution2(part2(input))}>
+          [Solve part 2]
+        </button>
         {solution2}
       </div>
     </div>
