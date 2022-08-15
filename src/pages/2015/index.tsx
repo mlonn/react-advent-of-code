@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Calendar from "../../components/Calendar";
-import Solution from "../../components/Solution";
+import Solution from "./components/Solution";
 import Star from "../../components/Star";
 import Background from "./components/Background";
 import Footer from "./components/Footer";

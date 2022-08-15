@@ -9,6 +9,7 @@ const StyledCalendar = styled.pre`
   user-select: none;
   display: grid;
   grid-template-columns: min-content min-content min-content;
+  align-items: end;
   padding: 50px;
   grid-column-gap: 10px;
 `;

@@ -1,5 +1,5 @@
 import React from "react";
-import Day from "../../../../components/Day";
+import Day from "../../components/Day";
 import Ornament from "../../components/Ornament";
 
 interface Props {

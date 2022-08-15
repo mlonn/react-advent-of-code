@@ -35,7 +35,7 @@ const Year = styled.li<{ selected: boolean }>`
 `;
 
 const Nav = (props: Props) => {
-  const years = ["2015"];
+  const years = ["2015", "2016"];
   const location = useLocation();
   return (
     <StyledNav>

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
 import AoC2015 from "./pages/2015";
+import AoC2016 from "./pages/2016";
 import Home from "./pages/Home";
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
           <Route path="/2015">
             <AoC2015 />
           </Route>
-          {/* <Route path="/2016">
+          <Route path="/2016">
             <AoC2016 />
           </Route>
+          {/*
           <Route path="/2017">
             <AoC2017 />
           </Route>

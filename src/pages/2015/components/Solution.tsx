@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-import status from "../pages/2015/status";
+import status from "../status";
 interface Props {}
 const Solution = (props: Props) => {
   let { day } = useParams<{ day: string }>();
