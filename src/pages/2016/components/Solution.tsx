@@ -1,16 +1,30 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Redirect, useHistory, useParams } from "react-router-dom";
-import status from "../status";
+import DaySolution from "../../../components/Solution";
+import { Solver } from "../../../types";
 interface Props {}
 const Solution = (props: Props) => {
   let { day } = useParams<{ day: string }>();
-  const { goBack, location } = useHistory();
-  const dayNumber = parseInt(day);
+  const [part1, setPart1] = useState<Solver>();
+  const [part2, setPart2] = useState<Solver>();
+  const [input, setInput] = useState<string>();
+  const { goBack } = useHistory();
 
-  if (isNaN(dayNumber) || dayNumber > 25) {
+  useEffect(() => {
+    const getParts = async () => {
+      const { part1, part2 } = await import(`../day/${day}/solution`);
+      const input = await import(`../day/${day}/input`);
+      setPart1(() => part1);
+      setPart2(() => part2);
+      setInput(input.default);
+    };
+    getParts();
+  }, []);
+
+  if (isNaN(+day) || +day > 25) {
     return <Redirect to="/"></Redirect>;
   }
-  if (!status[dayNumber]?.complete) {
+  if (!(input !== undefined && part1 && part2)) {
     return (
       <div>
         <p>Not yet solved</p>
@@ -18,13 +32,15 @@ const Solution = (props: Props) => {
       </div>
     );
   }
-  const SolutionDay = React.lazy(
-    () => import(`../pages${location.pathname}/Solution`)
-  );
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {SolutionDay && <SolutionDay />}
-    </Suspense>
+    <>
+      <DaySolution
+        title={`Day ${day}`}
+        input={input}
+        part1={part1}
+        part2={part2}
+      />
+    </>
   );
 };
 
