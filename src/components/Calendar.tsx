@@ -10,7 +10,6 @@ const StyledCalendar = styled.pre`
   display: grid;
   grid-template-columns: min-content min-content min-content;
   align-items: end;
-  padding: 50px;
   grid-column-gap: 10px;
 `;
 

@@ -36,6 +36,9 @@
       "import/no-anonymous-default-export": "off"
     }
   },
+  "prettier": {
+    "printWidth": 300
+  },
   "browserslist": {
     "production": [
       ">0.2%",
