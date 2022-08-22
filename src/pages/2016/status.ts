@@ -10,8 +10,8 @@ const status: Status = {
     veryComplete: true,
   },
   2: {
-    complete: false,
-    veryComplete: false,
+    complete: true,
+    veryComplete: true,
   },
   3: {
     complete: false,
