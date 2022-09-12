@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import input from "./input.txt";
 import { lines, permute } from "../../../../utils/helpers";
 
 function getGraph(input: string) {

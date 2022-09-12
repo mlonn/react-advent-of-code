@@ -1,4 +1,4 @@
-import { getNeighbours, grid, numbers } from "../../../../utils/helpers";
+import { getNeighbours, grid } from "../../../../utils/helpers";
 
 const copy = <T>(g: T[][]): T[][] => {
   return g.map((r) => [...r]);

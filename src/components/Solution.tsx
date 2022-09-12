@@ -13,16 +13,14 @@ const Solution = () => {
 
   useEffect(() => {
     const getParts = async () => {
-      const { part1, part2 } = await import(
-        `../pages/${year}/day/${day}/solution`
-      );
+      const { part1, part2 } = await import(`../pages/${year}/day/${day}/solution`);
       const input = await import(`../pages/${year}/day/${day}/input`);
       setPart1(() => part1);
       setPart2(() => part2);
       setInput(input.default);
     };
     getParts();
-  }, []);
+  }, [day, year]);
 
   if (isNaN(+day) || +day > 25) {
     return <Redirect to="/"></Redirect>;
@@ -39,15 +37,11 @@ const Solution = () => {
     <div>
       <h2>--- {`Day ${day}`} ---</h2>
       <div>
-        <button onClick={() => setSolution1(part1(input))}>
-          [Solve part 1]
-        </button>
+        <button onClick={() => setSolution1(part1(input))}>[Solve part 1]</button>
         {solution1}
       </div>
       <div>
-        <button onClick={() => setSolution2(part2(input))}>
-          [Solve part 2]
-        </button>
+        <button onClick={() => setSolution2(part2(input))}>[Solve part 2]</button>
         {solution2}
       </div>
     </div>

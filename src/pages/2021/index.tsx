@@ -41,7 +41,7 @@ const AoC2021 = () => {
               <Star complete={status[4]?.complete} />
               <Star complete={status[4]?.veryComplete} />
             </div>
-            <Day day={5}>{`.  .. ..    .    . .   '      ..|\..''             `}</Day>
+            <Day day={5}>{`.  .. ..    .    . .   '      ..|..''             `}</Day>
             <DayLabel>5</DayLabel>
             <div>
               <Star complete={status[5]?.complete} />

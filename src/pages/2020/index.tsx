@@ -3,7 +3,6 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Calendar from "../../components/Calendar";
 import Solution from "../../components/Solution";
-import S from "./components/Star";
 import status from "./status";
 import Day from "./components/Day";
 import Star from "../../components/Star";

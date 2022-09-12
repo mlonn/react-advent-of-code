@@ -13,10 +13,6 @@ const parseInstruction = (instruction: string) => {
   throw new Error("Faulty Instruction");
 };
 
-function step(instruction: string, currentDirection: Direction, position: { x: number; y: number }): [{ x: number; y: number }, Direction] {
-  return [position, currentDirection];
-}
-
 export const part1 = (input: string) => {
   let position = { x: 0, y: 0 };
   let currentDirection = Direction.N;
