@@ -42,7 +42,7 @@ const Solution = () => {
       </div>
       <div>
         <button onClick={() => setSolution2(part2(input))}>[Solve part 2]</button>
-        {solution2}
+        <pre>{solution2}</pre>
       </div>
     </div>
   );
