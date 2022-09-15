@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Fragment, Suspense } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import Calendar from "../../components/Calendar";
@@ -28,18 +28,14 @@ const AoC2016 = () => {
             {days
               .map(({ Day, dayStatus }, i) => {
                 return (
-                  <>
-                    <Day
-                      day={i + 1}
-                      complete={dayStatus?.complete}
-                      veryComplete={dayStatus?.veryComplete}
-                    />
+                  <Fragment key={i}>
+                    <Day day={i + 1} complete={dayStatus?.complete} veryComplete={dayStatus?.veryComplete} />
                     <DayLabel>{i + 1}</DayLabel>
                     <div>
                       <Star complete={dayStatus?.complete} />
                       <Star complete={dayStatus?.veryComplete} />
                     </div>
-                  </>
+                  </Fragment>
                 );
               })
               .reverse()}

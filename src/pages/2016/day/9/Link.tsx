@@ -1,5 +1,6 @@
 import React from "react";
 import Day from "../../components/Day";
+import Window from "../../components/Window";
 
 interface Props {
   complete?: boolean;
@@ -10,7 +11,9 @@ interface Props {
 const Link = ({ complete, veryComplete, day }: Props) => {
   return (
     <Day day={day} complete={complete} veryComplete={veryComplete}>
-      {" ---|:::::::::::|   |--------|[][]|_|[][]_\\------  "}
+      {" ---|::::"}
+      <Window color={"green"}>{`:::`}</Window>
+      {"::::|   |--------|[][]|_|[][]_\\------  "}
     </Day>
   );
 };

@@ -38,8 +38,8 @@ const status: Status = {
     veryComplete: true,
   },
   9: {
-    complete: false,
-    veryComplete: false,
+    complete: true,
+    veryComplete: true,
   },
   10: {
     complete: false,
