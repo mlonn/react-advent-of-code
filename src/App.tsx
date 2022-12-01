@@ -8,6 +8,8 @@ import AoC2018 from "./pages/2018";
 import AoC2019 from "./pages/2019";
 import AoC2020 from "./pages/2020";
 import AoC2021 from "./pages/2021";
+import AoC2022 from "./pages/2022";
+
 function App() {
   return (
     <main>
@@ -36,6 +38,9 @@ function App() {
           </Route>
           <Route path="/2021">
             <AoC2021 />
+          </Route>
+          <Route path="/2022">
+            <AoC2022 />
           </Route>
           <Route path="/">
             <Home />
