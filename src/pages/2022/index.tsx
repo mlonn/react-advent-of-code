@@ -185,35 +185,79 @@ const AoC2021 = () => {
               <Star complete={status[6]?.complete} />
               <Star complete={status[6]?.veryComplete} />
             </div>
-            <Day disabled day={5}>
-              {thing()}
+            <Day day={5} complete>
+              ##@@@@@#@@<span className="calendar-color-g0">@</span>
+              <span className="calendar-color-g4">#</span>
+              <span className="calendar-color-g1">#</span>
+              <span className="calendar-color-u">.~~.</span>
+              <span className="calendar-color-g2">#</span>
+              <span className="calendar-color-g3">#</span>
+              <span className="calendar-color-s">.</span>
+              <span className="calendar-color-c">/\</span>
+              <span className="calendar-color-s">.'</span>
+              <span className="calendar-color-g2">@</span>
+              <span className="calendar-color-g1">#@</span>
+              <span className="calendar-color-g0">@</span>
+              <span className="calendar-color-g2">@</span>#@###@@##@#@@@@@##@@
             </Day>
-            <DayLabel disabled>5</DayLabel>
+            <DayLabel>5</DayLabel>
             <div>
               <Star complete={status[5]?.complete} />
               <Star complete={status[5]?.veryComplete} />
             </div>
-            <Day disabled day={4}>
-              {thing()}
+            <Day day={4} complete>
+              @@@#@##<span className="calendar-color-g3">@@</span>
+              <span className="calendar-color-g0">#</span>
+              <span className="calendar-color-g4">@</span>
+              <span className="calendar-color-s">.'</span>
+              <span className="calendar-color-u">{` ~ `}</span>
+              <span className="calendar-color-s">'.</span>
+              <span className="calendar-color-c">/\</span>
+              <span className="calendar-color-s">'.</span>
+              <span className="calendar-color-c">/\</span>
+              <span className="calendar-color-s">{`'  .`}</span>
+              <span className="calendar-color-g0">@</span>
+              <span className="calendar-color-g3">#</span>
+              <span className="calendar-color-d">|</span>@@@@@|#@@@#@@@@#@@
             </Day>
-            <DayLabel disabled>4</DayLabel>
+            <DayLabel>4</DayLabel>
             <div>
               <Star complete={status[4]?.complete} />
               <Star complete={status[4]?.veryComplete} />
             </div>
-            <Day day={3}>{thing()}</Day>
+            <Day day={3} complete>
+              {`@@@`}
+              <span className="calendar-color-g1">@</span>
+              <span className="calendar-color-g3">#</span>
+              <span className="calendar-color-g0">@</span>
+              <span className="calendar-color-g3">@</span>
+              <span className="calendar-color-g1">@</span>
+              <span className="calendar-color-g2">#</span>
+              <span className="calendar-color-s">_/</span>
+              <span className="calendar-color-u">{` ~   ~  `}</span>
+              <span className="calendar-color-s">\ ' '. '.'.</span>
+              <span className="calendar-color-g4">#</span>
+              <span className="calendar-color-g2">#</span>
+              {`##@#@##@@#@@@@@@@`}
+            </Day>
             <DayLabel>3</DayLabel>
             <div>
               <Star complete={status[3]?.complete} />
               <Star complete={status[3]?.veryComplete} />
             </div>
-            <Day day={2}>{thing()}</Day>
+            <Day day={2} complete>
+              <span className="calendar-color-s">{`-~------'`}</span>
+              <span className="calendar-color-u">{`    ~    ~ `}</span>
+              <span className="calendar-color-s">{`'--~-----~-~----___________--`}</span>
+            </Day>
             <DayLabel>2</DayLabel>
             <div>
               <Star complete={status[2]?.complete} />
               <Star complete={status[2]?.veryComplete} />
             </div>
-            <Day day={1} complete>{`  ~    ~  ~      ~     ~ ~   ~     ~  ~  ~   ~   `}</Day>
+            <Day day={1} complete>
+              <span className={"calendar-color-u"}>{`  ~    ~  ~      ~     ~ ~   ~     ~  ~  ~   ~   `}</span>
+            </Day>
             <DayLabel>1</DayLabel>
             <div>
               <Star complete={status[1]?.complete} />

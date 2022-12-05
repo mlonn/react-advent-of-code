@@ -14,12 +14,36 @@ const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
   ${({ disabled, complete }) => {
     if (complete) {
       return css`
-        color: #5eabb4;
+        color: #666666;
+        .calendar-color-g0 {
+          color: #427322;
+        }
+        .calendar-color-g1 {
+          color: #4d8b03;
+        }
+        .calendar-color-g2 {
+          color: #7fbd39;
+        }
+        .calendar-color-g3 {
+          color: #427322;
+        }
+        .calendar-color-g4 {
+          color: #01461f;
+        }
+        .calendar-color-c {
+          color: #eeeeee;
+        }
+        .calendar-color-s {
+          color: #d0b376;
+        }
+        .calendar-color-u {
+          color: #5eabb4;
+        }
         :hover {
+          color: #666666;
           background-color: #1e1e46;
           background-color: rgba(119, 119, 165, 0.2);
           cursor: pointer;
-          color: #5eabb4;
         }
       `;
     }
