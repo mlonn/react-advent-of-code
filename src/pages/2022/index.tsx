@@ -177,10 +177,20 @@ const AoC2021 = () => {
               <Star complete={status[7]?.complete} />
               <Star complete={status[7]?.veryComplete} />
             </div>
-            <Day disabled day={6}>
-              {thing()}
+            <Day complete day={6}>
+              @@@@#@@@@@<span className="calendar-color-g0">@@</span>
+              <span className="calendar-color-u">.~~.</span>
+              <span className="calendar-color-g3">@@</span>
+              <span className="calendar-color-g2">@</span>
+              <span className="calendar-color-g3">#</span>
+              <span className="calendar-color-g4">#</span>
+              <span className="calendar-color-g3">@</span>
+              <span className="calendar-color-g2">#</span>
+              <span className="calendar-color-s">..</span>
+              <span className="calendar-color-g4">#</span>
+              <span className="calendar-color-g0">@</span>@##@@@@#@@@#@@#@@#@@#@
             </Day>
-            <DayLabel disabled>6</DayLabel>
+            <DayLabel>6</DayLabel>
             <div>
               <Star complete={status[6]?.complete} />
               <Star complete={status[6]?.veryComplete} />
