@@ -30,6 +30,9 @@ const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
         .calendar-color-g4 {
           color: #01461f;
         }
+        .calendar-color-a {
+          color: #aaaaaa;
+        }
         .calendar-color-c {
           color: #eeeeee;
         }

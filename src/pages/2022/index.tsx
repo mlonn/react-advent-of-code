@@ -154,6 +154,12 @@ const AoC2021 = () => {
               <Star complete={status[10]?.veryComplete} />
             </div>
             <Day disabled day={9}>
+              {/*#@@@@@#@@@@<span className="calendar-color-s">%%%%%|</span>*/}
+              {/*<span className="calendar-color-a">_</span> <span className="calendar-color-g3">@</span>*/}
+              {/*<span className="calendar-color-g1">@</span>*/}
+              {/*<span className="calendar-color-g3">@</span>*/}
+              {/*<span className="calendar-color-g2">@</span>*/}
+              {/*<span className="calendar-color-g1">@#</span>@@@@@@#@@|@@@@@@#@@##@@#*/}
               {thing()}
             </Day>
             <DayLabel disabled>9</DayLabel>
@@ -161,10 +167,18 @@ const AoC2021 = () => {
               <Star complete={status[9]?.complete} />
               <Star complete={status[9]?.veryComplete} />
             </div>
-            <Day disabled day={8}>
-              {thing()}
+            <Day complete day={8}>
+              #@@<span className="calendar-color-g2">#</span>
+              <span className="calendar-color-g0">@</span>
+              <span className="calendar-color-s">..</span>
+              <span className="calendar-color-a">{`/  \\`}</span>
+              <span className="calendar-color-u">.~~.</span>
+              <span className="calendar-color-a">{`/  \\`}</span>
+              <span className="calendar-color-s">.....</span>
+              <span className="calendar-color-g0">@</span>
+              <span className="calendar-color-g4">@</span>@@#@#@#@@@@@@#@@@###@#@
             </Day>
-            <DayLabel disabled>8</DayLabel>
+            <DayLabel>8</DayLabel>
             <div>
               <Star complete={status[8]?.complete} />
               <Star complete={status[8]?.veryComplete} />
