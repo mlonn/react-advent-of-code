@@ -28,6 +28,14 @@ export function permute<T>(permutation: T[]): T[][] {
   return result;
 }
 
+export function gcd(a: number, b: number): number {
+  return !b ? a : gcd(b, a % b);
+}
+
+export function lcm(a: number, b: number) {
+  return (a * b) / gcd(a, b);
+}
+
 export function numbers(data: string) {
   const buckets: number[] = [];
   lines(data).forEach((line, index) => {
