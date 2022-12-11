@@ -1,3 +1,8 @@
+export interface Point {
+  x: number;
+  y: number;
+}
+
 export function permute<T>(permutation: T[]): T[][] {
   let length = permutation.length,
     result = [permutation.slice()],
