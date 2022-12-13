@@ -42,6 +42,9 @@ const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
         .calendar-color-u {
           color: #5eabb4;
         }
+        .calendar-color-w {
+          color: #ffffff;
+        }
         :hover {
           color: #666666;
           background-color: #1e1e46;
