@@ -51,6 +51,13 @@ export function lines(data: string) {
 export function grid(data: string): string[][] {
   return lines(data).map((line) => line.split(""));
 }
+export type Direction = "U" | "R" | "D" | "L";
+export const Directions: { [key in Direction]: Point } = {
+  U: { x: 0, y: -1 },
+  R: { x: 1, y: 0 },
+  D: { x: 0, y: 1 },
+  L: { x: -1, y: 0 },
+};
 
 export function getNeighbours<T>(x: number, y: number, grid: T[][]): T[] {
   const neighbours: T[] = [];
