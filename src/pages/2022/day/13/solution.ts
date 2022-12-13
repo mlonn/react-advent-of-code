@@ -3,19 +3,23 @@ type Packet = number | Packet[];
 function compare(left: Packet, right: Packet): number {
   if (typeof left === "number" && typeof right === "number") {
     return left - right;
-  } else if (Array.isArray(left) && Array.isArray(right)) {
-    const length = left.length < right.length ? left.length : right.length;
-    for (let i = 0; i < length; i++) {
-      const v = compare(left[i], right[i]);
-      if (v !== 0) {
-        return v;
-      }
-    }
-    return left.length - right.length;
-  } else if (typeof left === "number" && Array.isArray(right)) {
+  }
+
+  if (typeof left === "number") {
     return compare([left], right);
   }
-  return compare(left, [right]);
+
+  if (typeof right === "number") {
+    return compare(left, [right]);
+  }
+
+  for (let i = 0; i < Math.min(left.length, right.length); i++) {
+    const v = compare(left[i], right[i]);
+    if (v !== 0) {
+      return v;
+    }
+  }
+  return left.length - right.length;
 }
 
 export const part1 = (input: string) => {

@@ -37,11 +37,7 @@ export function lcm(a: number, b: number) {
 }
 
 export function numbers(data: string) {
-  const buckets: number[] = [];
-  lines(data).forEach((line, index) => {
-    buckets.push(+line);
-  });
-  return buckets;
+  return lines(data).map((line) => +line);
 }
 
 export function lines(data: string) {
