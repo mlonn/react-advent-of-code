@@ -54,8 +54,8 @@ const status: Status = {
     veryComplete: true,
   },
   14: {
-    complete: false,
-    veryComplete: false,
+    complete: true,
+    veryComplete: true,
   },
   15: {
     complete: false,
