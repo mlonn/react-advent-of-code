@@ -79,6 +79,10 @@ const status: Status = {
   },
   19: {
     complete: true,
+    veryComplete: true,
+  },
+  20: {
+    complete: false,
     veryComplete: false,
   },
 };

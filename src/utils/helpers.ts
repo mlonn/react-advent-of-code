@@ -54,6 +54,21 @@ export const Directions: { [key in Direction]: Point } = {
   D: { x: 0, y: 1 },
   L: { x: -1, y: 0 },
 };
+export function primeFactors(n: number) {
+  let factors = [1];
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      factors.push(i);
+      if (i * i !== n) factors.push(n / i);
+    }
+  }
+
+  if (n > 1) {
+    factors.push(n);
+  }
+
+  return factors.sort((a, b) => a - b);
+}
 
 export function getNeighbours<T>(x: number, y: number, grid: T[][]): T[] {
   const neighbours: T[] = [];
