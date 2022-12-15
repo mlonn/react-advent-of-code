@@ -32,6 +32,14 @@ export function gcd(a: number, b: number): number {
   return !b ? a : gcd(b, a % b);
 }
 
+export interface Point {
+  x: number;
+  y: number;
+}
+export function manhattan(p: Point, q: Point): number {
+  return Math.abs(p.x - q.x) + Math.abs(p.y - q.y);
+}
+
 export function lcm(a: number, b: number) {
   return (a * b) / gcd(a, b);
 }
