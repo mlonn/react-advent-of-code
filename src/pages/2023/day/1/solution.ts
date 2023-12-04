@@ -65,9 +65,6 @@ export const part2 = (input: string) => {
 
     if (first.n && second.n) {
       sum += +`${first.n}${second.n}`;
-    } else {
-      console.log(line);
-      console.log(first, second);
     }
   });
   return sum;
