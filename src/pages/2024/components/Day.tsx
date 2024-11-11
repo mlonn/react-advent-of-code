@@ -12,50 +12,20 @@ interface Props {
 
 const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
   ${({ disabled, complete }) => {
-    let d;
     if (disabled) {
-      d = css`
+      return css`
+        color: #333;
         pointer-events: none;
       `;
     }
-
     return css`
-      ${d};
-      color: #666;
       :hover {
         background-color: #1e1e46;
         background-color: rgba(119, 119, 165, 0.2);
         cursor: pointer;
         color: #666;
       }
-      .calendar-color-l {
-        color: #ccccff;
-      }
-
-      .calendar-color-y {
-        color: #ffff66;
-        text-shadow: 0 0 5px #ffff66, 0 0 10px #ffff66;
-      }
-
-      .calendar-color-g {
-        color: #00cc00;
-      }
-
-      .calendar-color-n {
-        color: #9b715b;
-      }
-
-      .calendar-color-w {
-        color: #ffffff;
-      }
-
-      .calendar-color-m {
-        color: #d4dde4;
-      }
-
-      .calendar-color-b {
-        color: #5555bb;
-      }
+      color: #666;
       width: 100%;
     `;
   }};

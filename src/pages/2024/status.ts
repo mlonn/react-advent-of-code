@@ -2,23 +2,23 @@ import { Status } from "../../types";
 
 const status: Status = {
   1: {
-    complete: true,
-    veryComplete: true,
+    complete: false,
+    veryComplete: false,
   },
   2: {
-    complete: true,
-    veryComplete: true,
+    complete: false,
+    veryComplete: false,
   },
   3: {
-    complete: true,
-    veryComplete: true,
+    complete: false,
+    veryComplete: false,
   },
   4: {
-    complete: true,
-    veryComplete: true,
+    complete: false,
+    veryComplete: false,
   },
   5: {
-    complete: true,
+    complete: false,
     veryComplete: false,
   },
   6: {
