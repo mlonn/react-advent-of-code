@@ -198,3 +198,8 @@ export function goDirection<T>(x: number, y: number, direction: Direction, grid:
   const dy = y + d.y;
   return { v: grid[y + d.y][x + d.x], x: dx, y: dy };
 }
+export function printGrid(grid: string[][]) {
+  for (const row of grid) {
+    console.log(row.join(""));
+  }
+}
