@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import styled, { css } from "styled-components";
 
 interface Props {
@@ -10,8 +10,8 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
-  ${({ disabled, complete }) => {
+const StyledDay = styled(Link)<{ $complete?: boolean; $disabled?: boolean }>`
+  ${({ $disabled: disabled, $complete: complete }) => {
     if (disabled) {
       return css`
         color: #333;
@@ -19,7 +19,7 @@ const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
       `;
     }
     return css`
-      :hover {
+      &:hover {
         background-color: #1e1e46;
         background-color: rgba(119, 119, 165, 0.2);
         cursor: pointer;
@@ -32,10 +32,10 @@ const StyledDay = styled(Link)<{ complete?: boolean; disabled?: boolean }>`
 `;
 
 const Day = ({ children, day, disabled }: Props) => {
-  let { url } = useRouteMatch();
+  const { year } = useParams();
 
   return (
-    <StyledDay disabled={disabled} to={`${url}/day/${day}`}>
+    <StyledDay $disabled={disabled} to={`/${year}/day/${day}`}>
       {children}
     </StyledDay>
   );

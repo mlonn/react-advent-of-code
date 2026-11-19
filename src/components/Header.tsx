@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import styled from "styled-components";
 import Nav from "./Nav";
 
@@ -18,12 +18,16 @@ const StyledHeader = styled.header`
   h1 span {
     text-decoration: none;
     color: #00cc00;
-    text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+    text-shadow:
+      0 0 2px #00cc00,
+      0 0 5px #00cc00;
   }
   h1 a:hover,
   h1 a:focus {
     color: #99ff99;
-    text-shadow: 0 0 2px #99ff99, 0 0 5px #99ff99;
+    text-shadow:
+      0 0 2px #99ff99,
+      0 0 5px #99ff99;
   }
 `;
 

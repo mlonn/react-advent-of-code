@@ -6,9 +6,9 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const StyledWindow = styled.span<{ color: "green" | "red" }>`
-  ${({ color }) => {
-    switch (color) {
+const StyledWindow = styled.span<{ $color: "green" | "red" }>`
+  ${({ $color }) => {
+    switch ($color) {
       case "green":
         return css`
           color: #009900;
@@ -25,7 +25,7 @@ const StyledWindow = styled.span<{ color: "green" | "red" }>`
 `;
 
 const Window = ({ children, color }: Props) => {
-  return <StyledWindow color={color}>{children}</StyledWindow>;
+  return <StyledWindow $color={color}>{children}</StyledWindow>;
 };
 
 export default Window;
