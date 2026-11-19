@@ -1,35 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { Solver } from "../types";
+import { eventByYear } from "../years";
+
+const solutions = import.meta.glob<{ part1: Solver; part2: Solver }>("../pages/*/day/*/solution.ts");
+const inputs = import.meta.glob<string>("../pages/*/day/*/input.ts", { import: "default" });
 
 const Solution = () => {
   const [solution1, setSolution1] = useState<number | string>();
   const [solution2, setSolution2] = useState<number | string>();
-  let { day, year } = useParams<{ day: string; year: string }>();
+  const { day = "", year = "" } = useParams();
   const [part1, setPart1] = useState<Solver>();
   const [part2, setPart2] = useState<Solver>();
   const [input, setInput] = useState<string>();
-  const { goBack } = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getParts = async () => {
-      const { part1, part2 } = await import(`../pages/${year}/day/${day}/solution`);
-      const input = await import(`../pages/${year}/day/${day}/input`);
+      const loadSolution = solutions[`../pages/${year}/day/${day}/solution.ts`];
+      const loadInput = inputs[`../pages/${year}/day/${day}/input.ts`];
+      if (!loadSolution || !loadInput) {
+        return;
+      }
+      const [{ part1, part2 }, input] = await Promise.all([loadSolution(), loadInput()]);
       setPart1(() => part1);
       setPart2(() => part2);
-      setInput(input.default);
+      setInput(input);
     };
     getParts();
   }, [day, year]);
 
-  if (isNaN(+day) || +day > 25) {
-    return <Redirect to="/"></Redirect>;
+  if (isNaN(+day) || +day < 1 || +day > (eventByYear(year)?.days ?? 25)) {
+    return <Navigate to="/" replace />;
   }
   if (!(input !== undefined && part1 && part2)) {
     return (
       <div>
         <p>Not yet solved</p>
-        <button onClick={goBack}>[Go back]</button>
+        <button onClick={() => navigate(-1)}>[Go back]</button>
       </div>
     );
   }

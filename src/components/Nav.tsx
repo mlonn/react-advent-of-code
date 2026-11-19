@@ -1,6 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import styled, { css } from "styled-components";
+import { events } from "../years";
 
 interface Props {}
 
@@ -23,25 +24,27 @@ const StyledNav = styled.nav`
   }
 `;
 
-const Year = styled.li<{ selected: boolean }>`
-  ${({ selected }) =>
-    selected &&
+const Year = styled.li<{ $selected: boolean }>`
+  ${({ $selected }) =>
+    $selected &&
     css`
       color: #00cc00;
       font-weight: bold;
       font-size: 1.2em;
-      text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+      text-shadow:
+        0 0 2px #00cc00,
+        0 0 5px #00cc00;
     `};
 `;
 
 const Nav = (props: Props) => {
-  const years = ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"];
+  const years = events.map((e) => e.year).reverse();
   const location = useLocation();
   return (
     <StyledNav>
       <ul>
         {years.map((year) => (
-          <Year key={year} selected={location.pathname.includes(year)}>
+          <Year key={year} $selected={location.pathname.includes(year)}>
             <Link to={`/${year}`}>[{year}]</Link>
           </Year>
         ))}
