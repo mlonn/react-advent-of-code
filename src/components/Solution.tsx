@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import { Solver } from "../types";
+import { eventByYear } from "../years";
 
 const solutions = import.meta.glob<{ part1: Solver; part2: Solver }>("../pages/*/day/*/solution.ts");
 const inputs = import.meta.glob<string>("../pages/*/day/*/input.ts", { import: "default" });
@@ -29,7 +30,7 @@ const Solution = () => {
     getParts();
   }, [day, year]);
 
-  if (isNaN(+day) || +day > 25) {
+  if (isNaN(+day) || +day < 1 || +day > (eventByYear(year)?.days ?? 25)) {
     return <Navigate to="/" replace />;
   }
   if (!(input !== undefined && part1 && part2)) {

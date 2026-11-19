@@ -13,7 +13,7 @@ const StyledOrnament = styled.span<{ $type: OrnamentType; $complete?: boolean; $
     switch ($type) {
       case "@":
         return css`
-          color: ${veryComplete ? "#ff0000" : complete ? "#009900" : "#666"}};
+          color: ${veryComplete ? "#ff0000" : complete ? "#009900" : "#666"};
           ${
             veryComplete || complete
               ? css`

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router";
 import styled, { css } from "styled-components";
+import { events } from "../years";
 
 interface Props {}
 
@@ -37,7 +38,7 @@ const Year = styled.li<{ $selected: boolean }>`
 `;
 
 const Nav = (props: Props) => {
-  const years = ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"];
+  const years = events.map((e) => e.year).reverse();
   const location = useLocation();
   return (
     <StyledNav>

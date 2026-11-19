@@ -1,4 +1,4 @@
-import React from "react";
+import type { ComponentType } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useParams } from "react-router";
 import Header from "./components/Header";
 import AoC2015 from "./pages/2015";
@@ -11,9 +11,10 @@ import AoC2021 from "./pages/2021";
 import AoC2022 from "./pages/2022";
 import AoC2023 from "./pages/2023";
 import AoC2024 from "./pages/2024";
+import AoC2025 from "./pages/2025";
 import Home from "./pages/Home";
 
-const years: Record<string, React.ComponentType> = {
+const pages: Record<string, ComponentType> = {
   "2015": AoC2015,
   "2016": AoC2016,
   "2017": AoC2017,
@@ -24,12 +25,13 @@ const years: Record<string, React.ComponentType> = {
   "2022": AoC2022,
   "2023": AoC2023,
   "2024": AoC2024,
+  "2025": AoC2025,
 };
 
 const Year = () => {
   const { year = "" } = useParams();
-  const YearPage = years[year];
-  return YearPage ? <YearPage /> : <Navigate to="/" replace />;
+  const Page = pages[year];
+  return Page ? <Page /> : <Navigate to="/" replace />;
 };
 
 function App() {

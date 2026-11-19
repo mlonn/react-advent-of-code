@@ -7,10 +7,13 @@ import Star from "../../components/Star";
 import Footer from "./components/Footer";
 import status from "./status";
 
+type DayLinkProps = { day: number; complete?: boolean; veryComplete?: boolean };
+const dayLinks = import.meta.glob<{ default: React.ComponentType<DayLinkProps> }>("./day/*/Link.tsx");
+
 const days = [...Array(25)].map((_, i) => {
   const day = i + 1;
   return {
-    Day: React.lazy(() => import(`./day/${i + 1}/Link.tsx`)),
+    Day: React.lazy(dayLinks[`./day/${day}/Link.tsx`]),
     dayStatus: status[day],
   };
 });
